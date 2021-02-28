@@ -4,9 +4,82 @@
   | Home
 {% endblock title %}
 {% block main %}
-
-
 <main role="main" style="background-color: #000;">
+  <section class="search-banner bg-dark text-white py-1" id="search-banner">
+    <p style="color: #fff; margin-left: 10px;">  {% now 'D, Y-m-d' %}</p>
+    <div class="container bg-dark py-0 my-2">  
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card " style="background-color: rgb(99, 93, 93);">
+                <div class="card-body">
+                    <div class="row g-2">
+                <div class="col-md-2">
+                    <div class="form-group ">
+                          <select id="inputState" class="form-control" >
+                            <option selected>Select Rooms</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+
+                          </select>
+                        </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group ">
+                          <select id="inputState" class="form-control" >
+                            <option selected>Location</option>
+                            <option>City</option>
+                            <option>Jazz</option>
+                            <option>Brio</option>
+                            
+                          </select>
+                        </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group ">
+                          <select id="inputState" class="form-control" >
+                            <option selected>price</option>
+                            <option>Cheap</option>
+                            <option>Average</option>
+                            <option>Expensive</option>
+                            <option>1 Lac-5 Lac</option>
+                            <option>5 Lac-10 Lac</option>
+                            <option>10 Lac-15 Lac</option>
+                            <option>15 Lac-20 Lac</option>
+                            <option>20 Lac-25 Lac</option>
+                            <option>25 Lac & Above</option>
+                          </select>
+                        </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group ">
+                          <select id="inputState" class="form-control" >
+                            <option selected>Date </option>
+                            <option>jan-july</option>
+                            <option>july-sep</option>
+                            <option>sep-nov</option>
+                            <option>nov-dec</option>
+
+                          </select>
+                        </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-lg btn-success">Search Rooms...</button>
+
+                </div>
+            </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</section>
+
+
 <section class="jumbotron text-center bg-dark" style="border: 0px solid #000;">
 <style>body{
   font-family: Arial, Helvetica, sans-serif;
@@ -75,7 +148,6 @@ cursor: pointer;
       {% endif %}
   </div>
   </div>
-
 </div>
 
 <script>
@@ -119,20 +191,18 @@ cursor: pointer;
           <div class="card mb-3 shadow-sm">
             <img src="{{obj.img.url}}" height="225" width="100%"/>
             <div class="card-body">
-              <h5 class="card-title-white text-center ">{{obj.name}}</h5>
-              <p class="card-text">{{obj.desc|truncatechars:20}}</p>
-              <p class="card-text-white  text-right">Price: {{obj.price}} $</p>
+              <h5 class="card-title-white text-center " style="font-size: 19px;">{{obj.name|truncatechars:25}}</h5>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="{% url 'detail' obj.id %}" class="btn btn-primary  my-2" id="clickbtn2">View</a>
-                  {% comment %} <button href="detail" type="button" class="btn btn-primary ">View</button> {% endcomment %}
+                  <a href="{% url 'detail' obj.id %}" class="btn btn-sm btn-info mr-1  my-2 rounded-left text-white" id="clickbtn2">View</a>
                   {% if obj.reg_agent.id == user.id %}
-                    <a href="{% url 'update' obj.id %}" class="btn  btn-secondary my-2" id="clickbtn2">Edit</a>
-                    <a href="{% url 'delete' obj.id %}" class="btn  btn-danger my-2" id="clickbtn2">Delete</a>
+                    <a href="{% url 'update' obj.id %}" class="btn btn-sm  btn-warning mr-1 my-2" id="clickbtn2">Edit</a>
+                    <a href="{% url 'delete' obj.id %}" class="btn btn-sm  btn-danger my-2" id="clickbtn2">Delete</a>
                   {% endif %} 
                 </div>
               </div>
-              <small class="text-right">{{obj.dt}}</small>
+              <p class="text-right" style="font-size: 11px; font-weight: 600;">{{obj.dt}}</p>
+        
             </div>
           </div>
         </div>
@@ -171,5 +241,8 @@ cursor: pointer;
   </ul>
 {% endif %}
 
+
+
 </main>
 {% endblock main %}
+

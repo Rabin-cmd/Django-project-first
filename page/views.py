@@ -20,7 +20,7 @@ class home(ListView):
   template_name='index.html'
   context_object_name='obj'
   queryset = Rental.objects.order_by('-dt')
-  paginate_by = 6  
+  paginate_by = 8 
 
 
 class detail(DetailView):
