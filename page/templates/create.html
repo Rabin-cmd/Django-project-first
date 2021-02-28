@@ -4,9 +4,9 @@
 
   {% endblock css %} {% endcomment %}
 {% block main %}
-<h1 class="text-center"> Add Item :</h1>
-<div class='container mt-3' style="width: 40%">
-<form method="post" enctype="multipart/form-data">
+<h4 class="text-center"> Add Item :</h1>
+<div class='container' style="width: 50%">
+<form method="post" enctype="multipart/form-data" style="background-color: rgb(54, 15, 85);">
     {% csrf_token %}
     {{ form.name|as_crispy_field }}
     {{ form.img|as_crispy_field }}
@@ -14,7 +14,7 @@
     {{ form.price|as_crispy_field }}
     {{ form.type|as_crispy_field }}
     <input type="hidden" name="reg_agent" value="{{user.id}}">
-    <input type="submit" value="Save" />
+    <input type="submit" value="Save" class="btn btn-sm btn-success mt-3"/>
 </form>
 </div>  
 {% endblock main %} 
